@@ -25,9 +25,13 @@ time.sleep(8)
 #driver.find_element_by_tag_name("")
 
 #Xpath 定位
-driver.find_element_by_xpath("//*[@id='kw']").send_keys("CBA")
-driver.find_element_by_xpath("//*[@id='su']").click()
+#driver.find_element_by_xpath("//*[@id='kw']").send_keys("CBA")
+#driver.find_element_by_xpath("//*[@name='wd']").send_keys("CBA")
+#driver.find_element_by_xpath("//*[@id='su']").click()
 
+#CSS 定位
+#driver.find_element_by_css_selector("#kw").send_keys("CBA")
+#driver.find_element_by_css_selector("#su").click()
 
 time.sleep(6)
 driver.quit()

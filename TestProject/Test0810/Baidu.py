@@ -1,3 +1,4 @@
+import os
 import unittest
 from selenium import webdriver
 import time
@@ -31,16 +32,31 @@ class Baidu1(unittest.TestCase):
     def test_baiDuSearch(self):
         driver = self.driver
         driver.get(self.base_url)
+        time.sleep(3)
+        try:
+            self.assertTrue("12" == "3",msg="not equal!")
+        except:
+            self.saveScreenShot(driver,"baiDu.png")
+
         driver.find_element_by_id("kw").clear()
         driver.find_element_by_id("kw").send_keys(u"虽然是精神病但没关系")
         driver.find_element_by_id("su").click()
         time.sleep(6)
-        #self.assertEqual("虽然是精神病但没关系_百度搜索",driver.title,msg="not equal!")
-        self.assertTrue(1+2 == 4,msg="not True!")
+        self.assertEqual("虽然是精神病但没关系_百度搜索", driver.title, msg="not equal!")
         time.sleep(6)
-
         print("------baiDu--------")
 
+    def saveScreenShot(self, driver, file_name):
+        if not os.path.exists("./errorImage"):
+            os.makedirs("./errorImage")
+        now = time.strftime("%Y%m%d-%H%M%S", time.localtime(time.time()))
+        # print("---------------------")
+        # print(time.time())
+        # print(time.localtime(time.ti0me()))
+        # print(now)
+        driver.get_screenshot_as_file("./errorImage/" + now + "-" + file_name)
+        time.sleep()
 
     if __name__=="__main__":
         unittest.main()
+
